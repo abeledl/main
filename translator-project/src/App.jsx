@@ -1,7 +1,6 @@
 import StageComponent from "./stage-components/StageComponent"
 import MenuComponent from "./menu-components/MenuComponent"
 import { useState } from "react"
-import { TextDataProvider } from "./stage-components/TextDataProvider"
 
 function App() {
   const [allTextData, setAllTextData] = useState({})
@@ -14,10 +13,15 @@ function App() {
   return (
     <>
       <div style={appStyle}>
-        <TextDataProvider>
-          <StageComponent data={allTextData} breakLineTracker={breakLineTracker} setBreakLineTracker={setBreakLineTracker} />
-        </TextDataProvider>
-        <MenuComponent setAllTextData={setAllTextData} setBreakLineTracker={setBreakLineTracker}/>
+        <StageComponent
+          data={allTextData}
+          breakLineTracker={breakLineTracker}
+          setBreakLineTracker={setBreakLineTracker}
+        />
+        <MenuComponent
+          setAllTextData={setAllTextData}
+          setBreakLineTracker={setBreakLineTracker}
+        />
       </div>
     </>
   )

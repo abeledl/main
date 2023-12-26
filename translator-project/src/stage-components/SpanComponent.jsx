@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 
-export default function SpanComponent({ text, handleSpanInfo, id, otherData, complete , breakLineTracker, setBreakLineTracker }) {
+export default function SpanComponent({text, handleSpanInfo, id,  breakLineTracker}) {
     const spanRef = useRef(null)
     const [addBreakLine, setAddBreakLine] = useState(false)
     const refCount = useRef(0)
@@ -27,8 +27,7 @@ export default function SpanComponent({ text, handleSpanInfo, id, otherData, com
         if (!addedTheWords) {
             const checkSpanWidth = () => {
                 if (spanRef.current && spanRef.current.offsetWidth !== undefined) {
-                    const isOverflown = handleSpanInfo(spanRef.current.offsetWidth, text, id, otherData, refCount.current);
-                    setAddBreakLine(isOverflown);
+                    handleSpanInfo(spanRef.current.offsetWidth, id);
                 }
             };
 
@@ -40,7 +39,10 @@ export default function SpanComponent({ text, handleSpanInfo, id, otherData, com
 
     useEffect(()=>{
         if (addedTheWords){
-            setAddBreakLine(breakLineTracker[id])
+            console.log("word: ", text, "breakline: ", breakLineTracker[id]);
+            if(breakLineTracker[id]){
+                setAddBreakLine(breakLineTracker[id])
+            }
         }
     }, [breakLineTracker])
 

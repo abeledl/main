@@ -2,7 +2,7 @@ import TextInputComponent from "./TextInputComponent"
 import PlayButtonComponent from "./PlayButtonComponent"
 import { useState } from "react"
 
-export default function MenuComponent({ setAllTextData }) {
+export default function MenuComponent({ setAllTextData, setBreakLineTracker}) {
     const [englishText, setEnglishText] = useState([])
     const [spanishText, setSpanishText] = useState([])
     const [phoneticText, setPhoneticText] = useState([])
@@ -20,7 +20,7 @@ export default function MenuComponent({ setAllTextData }) {
         const wordsArray = englishText.split('\n')
         const englishWordsArray = []
         const spanishWordsArray = []
-
+        const breaklinesArray = []
         wordsArray.forEach(word => {
             const twoWordsArray = word.split("|")
             if (twoWordsArray[0]) {
@@ -34,8 +34,10 @@ export default function MenuComponent({ setAllTextData }) {
             } else {
                 spanishWordsArray.push('')
             }
+            breaklinesArray.push(false)
         })
         setAllTextData({ englishText: englishWordsArray, spanishText: spanishWordsArray, phoneticText: phoneticText })
+        setBreakLineTracker(breaklinesArray)
     }
 
     return (

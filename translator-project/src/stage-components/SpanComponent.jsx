@@ -16,7 +16,6 @@ export default function SpanComponent({ text, handleSpanInfo, id, breakLineTrack
         WebkitTextStrokeColor: "black",
         textShadow: "2px 2px 0 white, -2px 2px 0 white,-2px -2px 0 white, 2px -2px 0 white",
         WebkitFilter: "drop-shadow(0 5px 3px rgb(1, 1,1, 0.6))",
-        // textShadow: "dropShadow(0 5px 3px rgb(1, 1,1, 0.6))",
         letterspacing: "-3px",
         wordSpacing: "12px"
     }

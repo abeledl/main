@@ -1,7 +1,7 @@
 import StageComponent from "./stage-components/StageComponent"
 import MenuComponent from "./menu-components/MenuComponent"
-import { useState } from "react"
-import "./AppStyle.css"
+import { useEffect, useState } from "react"
+import "./AppStyle.scss"
 
 function App() {
   const [allTextData, setAllTextData] = useState({})
@@ -14,11 +14,13 @@ function App() {
   return (
     <>
       <div style={appStyle}>
-        <StageComponent
-          data={allTextData}
-          breakLineTracker={breakLineTracker}
-          setBreakLineTracker={setBreakLineTracker}
-        />
+        {/* <div className="blurry-background"> */}
+          <StageComponent
+            data={allTextData}
+            breakLineTracker={breakLineTracker}
+            setBreakLineTracker={setBreakLineTracker}
+          />
+        {/* </div> */}
         <MenuComponent
           setAllTextData={setAllTextData}
           setBreakLineTracker={setBreakLineTracker}

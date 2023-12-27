@@ -1,6 +1,7 @@
 import StageComponent from "./stage-components/StageComponent"
 import MenuComponent from "./menu-components/MenuComponent"
 import { useState } from "react"
+import "./AppStyle.css"
 
 function App() {
   const [allTextData, setAllTextData] = useState({})

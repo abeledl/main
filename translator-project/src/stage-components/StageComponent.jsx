@@ -13,18 +13,20 @@ export default function StageComponent({ data, breakLineTracker, setBreakLineTra
     }
 
     return (
-        <div style={stageStyle}>
-            <PrompterComponent
-                data={data.englishText}
-                breakLineTracker={breakLineTracker}
-                setBreakLineTracker={setBreakLineTracker}
-            />
-            <PrompterComponent
-                data={data.spanishText}
-                breakLineTracker={breakLineTracker}
-                setBreakLineTracker={setBreakLineTracker}
-            />
-            <FooterComponent />
+        <div className="blurry-background">
+            <div style={stageStyle}>
+                <PrompterComponent
+                    data={data.englishText}
+                    breakLineTracker={breakLineTracker}
+                    setBreakLineTracker={setBreakLineTracker}
+                />
+                <PrompterComponent
+                    data={data.spanishText}
+                    breakLineTracker={breakLineTracker}
+                    setBreakLineTracker={setBreakLineTracker}
+                />
+                <FooterComponent />
+            </div>
         </div>
     )
 }

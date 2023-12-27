@@ -1,11 +1,9 @@
 import { useRef, useEffect, useState } from 'react'
 
-export default function SpanComponent({text, handleSpanInfo, id,  breakLineTracker}) {
+export default function SpanComponent({ text, handleSpanInfo, id, breakLineTracker }) {
     const spanRef = useRef(null)
     const [addBreakLine, setAddBreakLine] = useState(false)
-    const refCount = useRef(0)
     const [addedTheWords, setAddedTheWords] = useState(false)
-
     const spanStyles = {
         fontSize: "100px",
         color: "white",
@@ -30,19 +28,14 @@ export default function SpanComponent({text, handleSpanInfo, id,  breakLineTrack
                     handleSpanInfo(spanRef.current.offsetWidth, id);
                 }
             };
-
             checkSpanWidth();
             setAddedTheWords(true)
         }
-  
-    }, [addedTheWords])
+    }, [])
 
-    useEffect(()=>{
-        if (addedTheWords){
-            console.log("word: ", text, "breakline: ", breakLineTracker[id]);
-            if(breakLineTracker[id]){
-                setAddBreakLine(breakLineTracker[id])
-            }
+    useEffect(() => {
+        if (addedTheWords) {
+            setAddBreakLine(breakLineTracker[id])
         }
     }, [breakLineTracker])
 

@@ -1,11 +1,11 @@
-import StageComponent from "./components/stage-components/Stage/Stage"
-import MenuComponent from "./components/menu-components/Menu/Menu"
-import { useEffect, useState } from "react"
+import Stage from "./components/stage-components/Stage/Stage"
+import Menu from "./components/menu-components/Menu/Menu"
+import { useState } from "react"
 import "./AppStyle.scss"
 
 function App() {
-  const [allTextData, setAllTextData] = useState({})
-  const [breakLineTracker, setBreakLineTracker] = useState([])
+  const [languageTranslationsMap, setLanguageTranslationsMap] = useState({})
+  const [displayWordsBreaklineFlags, setDisplayWordsBreaklineFlags] = useState([])
 
   const appStyle = {
     display: "flex",
@@ -14,16 +14,14 @@ function App() {
   return (
     <>
       <div style={appStyle}>
-        {/* <div className="blurry-background"> */}
-          <StageComponent
-            data={allTextData}
-            breakLineTracker={breakLineTracker}
-            setBreakLineTracker={setBreakLineTracker}
-          />
-        {/* </div> */}
-        <MenuComponent
-          setAllTextData={setAllTextData}
-          setBreakLineTracker={setBreakLineTracker}
+        <Stage
+          languageTranslationsMap={languageTranslationsMap}
+          displayWordsBreaklineFlags={displayWordsBreaklineFlags}
+          setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
+        />
+        <Menu
+          setLanguageTranslationsMap={setLanguageTranslationsMap}
+          setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
         />
       </div>
     </>

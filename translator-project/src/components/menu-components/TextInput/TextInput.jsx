@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function TextInputComponent({setInputText, placeholder}) {
+export default function TextInput({setInputText, placeholder}) {
     const [userInputText, setUserInputText] = useState("")
 
     const updateInputText = (e) => {

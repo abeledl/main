@@ -1,11 +1,11 @@
-import TextInputComponent from "../TextInput/TextInput"
-import PlayButtonComponent from "../PlayButton/PlayButton"
+import TextInput from "../TextInput/TextInput"
+import PlayButton from "../PlayButton/PlayButton"
 import { useState } from "react"
 
-export default function MenuComponent({ setAllTextData, setBreakLineTracker}) {
-    const [englishText, setEnglishText] = useState([])
-    const [spanishText, setSpanishText] = useState([])
-    const [phoneticText, setPhoneticText] = useState([])
+export default function Menu({ setLanguageTranslationsMap, setDisplayWordsBreaklineFlags}) {
+    const [englishWords, setEnglishWords] = useState([])
+    const [spanishWords, setSpanishWords] = useState([])
+    const [phoneticWordsSymbols, setPhoneticWordsSymbols] = useState([])
 
     const menyStyle = {
         display: "flex",
@@ -15,9 +15,9 @@ export default function MenuComponent({ setAllTextData, setBreakLineTracker}) {
         height: "400px",
     }
 
-    const loadData = () => {
+    const splitTextInputIntoWordsArrays = () => {
         // separte the text into an english array and a spanishh array
-        const wordsArray = englishText.split('\n')
+        const wordsArray = englishWords.split('\n')
         const englishWordsArray = []
         const spanishWordsArray = []
         const breaklinesArray = []
@@ -36,16 +36,16 @@ export default function MenuComponent({ setAllTextData, setBreakLineTracker}) {
             }
             breaklinesArray.push(false)
         })
-        setAllTextData({ englishText: englishWordsArray, spanishText: spanishWordsArray, phoneticText: phoneticText })
-        setBreakLineTracker(breaklinesArray)
+        setLanguageTranslationsMap({ englishWords: englishWordsArray, spanishWords: spanishWordsArray, phoneticWordsSymbols: phoneticWordsSymbols })
+        setDisplayWordsBreaklineFlags(breaklinesArray)
     }
 
     return (
         <div style={menyStyle}>
-            <TextInputComponent setInputText={setEnglishText} placeholder={"English"}/>
-            <TextInputComponent setInputText={setSpanishText} placeholder={"Spanish"}/>
-            <TextInputComponent setInputText={setPhoneticText} placeholder={"Phonetic"}/>
-            <PlayButtonComponent onSubmit={loadData} />
+            <TextInput setInputText={setEnglishWords} placeholder={"English"}/>
+            <TextInput setInputText={setSpanishWords} placeholder={"Spanish"}/>
+            <TextInput setInputText={setPhoneticWordsSymbols} placeholder={"Phonetic"}/>
+            <PlayButton onSubmit={splitTextInputIntoWordsArrays} />
         </div>
     )
 }

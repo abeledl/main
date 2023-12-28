@@ -1,12 +1,12 @@
-import PrompterComponent from "../Prompter/Prompter"
-import FooterComponent from "../Footer/Footer"
-import BlurrComponent from "../Blurr/Blurr"
+import Prompter from "../Prompter/Prompter"
+import Footer from "../Footer/Footer"
+import Blurr from "../Blurr/Blurr"
 import myVideo from "../../../assets/video2.webm"
-// import myImage from "../assets/image1.png"
-export default function StageComponent({
-    data,
-    breakLineTracker,
-    setBreakLineTracker
+
+export default function Stage({
+    languageTranslationsMap,
+    displayWordsBreaklineFlags,
+    setDisplayWordsBreaklineFlags
 }) {
 
     const stageStyle = {
@@ -24,29 +24,30 @@ export default function StageComponent({
     const videoStyle = {
         left: '7.4%',
         height: "1900px",
-        // background: `url(${myImage})`,
         position: "absolute"
     }
 
     return (
         <div style={stageStyle}>
-            <BlurrComponent />
+            <Blurr />
             <div style={videoStyle}>
                 <video width="100%" height="100%" autoPlay loop muted>
                     <source src={myVideo} type="video/webm" />
-                </video> */
+                </video> 
             </div>
-            <PrompterComponent
-                data={data.englishText}
-                breakLineTracker={breakLineTracker}
-                setBreakLineTracker={setBreakLineTracker}
+
+            <Prompter
+                prompterDisplayWords={languageTranslationsMap.englishWords}
+                displayWordsBreaklineFlags={displayWordsBreaklineFlags}
+                setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
             />
-            <PrompterComponent
-                data={data.spanishText}
-                breakLineTracker={breakLineTracker}
-                setBreakLineTracker={setBreakLineTracker}
+
+            <Prompter
+                prompterDisplayWords={languageTranslationsMap.spanishWords}
+                displayWordsBreaklineFlags={displayWordsBreaklineFlags}
+                setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
             />
-            <FooterComponent />
+            <Footer />
         </div>
     )
 }

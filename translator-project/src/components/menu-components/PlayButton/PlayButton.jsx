@@ -1,4 +1,4 @@
-export default function PlayButtonComponent({onSubmit}) {
+export default function PlayButton({onSubmit}) {
     const buttonStyle = {
         height: "100px",
         fontSize: "30px",

@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
-import "./styles/SpanComponentStyle.css"
+import "./styles/SpanStyle.css"
 
-export default function SpanComponent({ text, handleSpanInfo, id, breakLineTracker }) {
+export default function Span({ word, handleSpanInfo, id, displayWordsBreaklineFlags }) {
     const spanRef = useRef(null)
     const [addBreakLine, setAddBreakLine] = useState(false)
     const [addedTheWords, setAddedTheWords] = useState(false)
@@ -36,15 +36,15 @@ export default function SpanComponent({ text, handleSpanInfo, id, breakLineTrack
 
     useEffect(() => {
         if (addedTheWords) {
-            setAddBreakLine(breakLineTracker[id])
+            setAddBreakLine(displayWordsBreaklineFlags[id])
         }
-    }, [breakLineTracker])
+    }, [displayWordsBreaklineFlags])
 
     return (
         <span role={'span'}>
             <span ref={spanRef} style={spanStyles} id="spans-text" >
                 {addBreakLine ? <br data-test-id={'break'} /> : ""}
-                {text}
+                {word}
             </span>
         </span>
     )

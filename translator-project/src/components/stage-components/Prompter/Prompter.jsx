@@ -1,15 +1,16 @@
 import { useState, useEffect, Fragment, useRef } from "react"
-import SpanComponent from "../Span/Span"
+import Span from "../Span/Span"
 import "./styles/PrompterStyle.css"
-import BlurrComponent from "../Blurr/Blurr"
+import Blurr from "../Blurr/Blurr"
 
-export default function PrompterComponent({
-    data,
-    breakLineTracker,
-    setBreakLineTracker
+export default function Prompter({
+    prompterDisplayWords,
+    displayWordsBreaklineFlags,
+    setDisplayWordsBreaklineFlags
 }) {
     const totalWidth = useRef(0)
-    const breaklines = useRef(breakLineTracker)
+    const breaklines = useRef(displayWordsBreaklineFlags)
+    const PROMPTER_WIDTH = 900
     const prompterStyle = {
         position: "relative",
         height: "500px",
@@ -26,28 +27,28 @@ export default function PrompterComponent({
             totalWidth.current = 0
         }
         totalWidth.current += width
-        if (totalWidth.current > 900) {
+        if (totalWidth.current > PROMPTER_WIDTH) {
             totalWidth.current = width
             breaklines.current[index] = true
         } else {
             breaklines.current[index] = false
         }
-        setBreakLineTracker(breaklines.current)
+        setDisplayWordsBreaklineFlags(breaklines.current)
     }
 
     return (
         <div style={prompterStyle}>
             <div className="prompter-blurr">
-                <BlurrComponent />
+                <Blurr />
                 <div className="spans-container">
-                    {data ?
-                        data.map((word, index) => {
+                    {prompterDisplayWords ?
+                        prompterDisplayWords.map((word, index) => {
                             return <Fragment key={index}>
-                                <SpanComponent
-                                    text={word}
+                                <Span
+                                    word={word}
                                     handleSpanInfo={handleSpanInfo}
                                     id={index}
-                                    breakLineTracker={breakLineTracker}
+                                    displayWordsBreaklineFlags={displayWordsBreaklineFlags}
                                 />
                             </Fragment>
                         })

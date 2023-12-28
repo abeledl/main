@@ -1,5 +1,5 @@
-import StageComponent from "./stage-components/StageComponent"
-import MenuComponent from "./menu-components/MenuComponent"
+import StageComponent from "./components/stage-components/Stage/Stage"
+import MenuComponent from "./components/menu-components/Menu/Menu"
 import { useEffect, useState } from "react"
 import "./AppStyle.scss"
 

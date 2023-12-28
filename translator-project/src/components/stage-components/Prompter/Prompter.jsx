@@ -8,8 +8,8 @@ export default function Prompter({
     displayWordsBreaklineFlags,
     setDisplayWordsBreaklineFlags
 }) {
-    const totalWidth = useRef(0)
-    const breaklines = useRef(displayWordsBreaklineFlags)
+    const totalSpanWidthSum = useRef(0)
+    const displayWordsBreaklineFlagsRef = useRef(displayWordsBreaklineFlags)
     const PROMPTER_WIDTH = 900
     const prompterStyle = {
         position: "relative",
@@ -22,18 +22,18 @@ export default function Prompter({
         }
     }
 
-    const handleSpanInfo = (width, index) => {
-        if (index === 0) {
-            totalWidth.current = 0
+    const handleSpanWidthOverflowWithBreakline = (spanWidth, id) => {
+        if (id === 0) {
+            totalSpanWidthSum.current = 0
         }
-        totalWidth.current += width
-        if (totalWidth.current > PROMPTER_WIDTH) {
-            totalWidth.current = width
-            breaklines.current[index] = true
+        totalSpanWidthSum.current += spanWidth
+        if (totalSpanWidthSum.current > PROMPTER_WIDTH) {
+            totalSpanWidthSum.current = spanWidth
+            displayWordsBreaklineFlagsRef.current[id] = true
         } else {
-            breaklines.current[index] = false
+            displayWordsBreaklineFlagsRef.current[id] = false
         }
-        setDisplayWordsBreaklineFlags(breaklines.current)
+        setDisplayWordsBreaklineFlags(displayWordsBreaklineFlagsRef.current)
     }
 
     return (
@@ -46,7 +46,7 @@ export default function Prompter({
                             return <Fragment key={index}>
                                 <Span
                                     word={word}
-                                    handleSpanInfo={handleSpanInfo}
+                                    handleSpanWidthOverflowWithBreakline={handleSpanWidthOverflowWithBreakline}
                                     id={index}
                                     displayWordsBreaklineFlags={displayWordsBreaklineFlags}
                                 />

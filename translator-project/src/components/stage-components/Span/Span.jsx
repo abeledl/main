@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import "./styles/SpanStyle.css"
 
-export default function Span({ word, handleSpanInfo, id, displayWordsBreaklineFlags }) {
+export default function Span({ word, handleSpanWidthOverflowWithBreakline, id, displayWordsBreaklineFlags }) {
     const spanRef = useRef(null)
     const [addBreakLine, setAddBreakLine] = useState(false)
     const [addedTheWords, setAddedTheWords] = useState(false)
@@ -26,7 +26,7 @@ export default function Span({ word, handleSpanInfo, id, displayWordsBreaklineFl
         if (!addedTheWords) {
             const checkSpanWidth = () => {
                 if (spanRef.current && spanRef.current.offsetWidth !== undefined) {
-                    handleSpanInfo(spanRef.current.offsetWidth, id);
+                    handleSpanWidthOverflowWithBreakline(spanRef.current.offsetWidth, id);
                 }
             };
             checkSpanWidth();

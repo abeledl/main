@@ -15,7 +15,7 @@ export default function Menu({ setLanguageTranslationsMap, setDisplayWordsBreakl
         height: "400px",
     }
 
-    const splitTextInputIntoWordsArrays = () => {
+    const splitTextInputByLanguage = () => {
         // separte the text into an english array and a spanishh array
         const wordsArray = englishWords.split('\n')
         const englishWordsArray = []
@@ -45,7 +45,7 @@ export default function Menu({ setLanguageTranslationsMap, setDisplayWordsBreakl
             <TextInput setInputText={setEnglishWords} placeholder={"English"}/>
             <TextInput setInputText={setSpanishWords} placeholder={"Spanish"}/>
             <TextInput setInputText={setPhoneticWordsSymbols} placeholder={"Phonetic"}/>
-            <PlayButton onSubmit={splitTextInputIntoWordsArrays} />
+            <PlayButton onSubmit={splitTextInputByLanguage} />
         </div>
     )
 }

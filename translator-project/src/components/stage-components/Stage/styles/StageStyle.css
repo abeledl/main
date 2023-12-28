@@ -1,0 +1,12 @@
+.stage-container {
+    width: 1024px;
+    height: 2048px;
+    background: rgb(250, 250, 250);
+    display: grid;
+    grid-template-rows: 45% 45% 10%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+}
+

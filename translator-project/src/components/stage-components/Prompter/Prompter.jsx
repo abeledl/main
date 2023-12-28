@@ -1,7 +1,7 @@
-import { useState, useEffect, Fragment, useRef } from "react"
 import Span from "../Span/Span"
-import "./styles/PrompterStyle.css"
 import Blurr from "../Blurr/Blurr"
+import { Fragment, useRef } from "react"
+import "./styles/PrompterStyle.css"
 
 export default function Prompter({
     prompterDisplayWords,
@@ -11,16 +11,6 @@ export default function Prompter({
     const totalSpanWidthSum = useRef(0)
     const displayWordsBreaklineFlagsRef = useRef(displayWordsBreaklineFlags)
     const PROMPTER_WIDTH = 900
-    const prompterStyle = {
-        position: "relative",
-        height: "500px",
-        width: "900px",
-        textAlign: "center",
-        top: '20%',
-        '& .gradientBg': {
-            background: "none",
-        }
-    }
 
     const handleSpanWidthOverflowWithBreakline = (spanWidth, id) => {
         if (id === 0) {
@@ -37,7 +27,7 @@ export default function Prompter({
     }
 
     return (
-        <div style={prompterStyle}>
+        <div className="prompter-container">
             <div className="prompter-blurr">
                 <Blurr />
                 <div className="spans-container">

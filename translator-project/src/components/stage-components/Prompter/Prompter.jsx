@@ -4,26 +4,26 @@ import { Fragment, useRef } from "react"
 import "./styles/PrompterStyle.css"
 
 export default function Prompter({
-    prompterDisplayWords,
-    displayWordsBreaklineFlags,
-    setDisplayWordsBreaklineFlags
+    words,
+    breaklineFlags,
+    setBreaklineFlags
 }) {
-    const totalSpanWidthSum = useRef(0)
-    const displayWordsBreaklineFlagsRef = useRef(displayWordsBreaklineFlags)
+    const spanWidthSum = useRef(0)
+    const breaklineFlagsRef = useRef(breaklineFlags)
     const PROMPTER_WIDTH = 900
 
-    const handleSpanWidthOverflowWithBreakline = (spanWidth, id) => {
+    const updateBreaklineFlags = (spanWidth, id) => {
         if (id === 0) {
-            totalSpanWidthSum.current = 0
+            spanWidthSum.current = 0
         }
-        totalSpanWidthSum.current += spanWidth
-        if (totalSpanWidthSum.current > PROMPTER_WIDTH) {
-            totalSpanWidthSum.current = spanWidth
-            displayWordsBreaklineFlagsRef.current[id] = true
+        spanWidthSum.current += spanWidth
+        if (spanWidthSum.current > PROMPTER_WIDTH) {
+            spanWidthSum.current = spanWidth
+            breaklineFlagsRef.current[id] = true
         } else {
-            displayWordsBreaklineFlagsRef.current[id] = false
+            breaklineFlagsRef.current[id] = false
         }
-        setDisplayWordsBreaklineFlags(displayWordsBreaklineFlagsRef.current)
+        setBreaklineFlags(breaklineFlagsRef.current)
     }
 
     return (
@@ -31,16 +31,15 @@ export default function Prompter({
             <div className="prompter-blurr">
                 <Blurr />
                 <div className="spans-container">
-                    {prompterDisplayWords ?
-                        prompterDisplayWords.map((word, index) => {
-                            return <Fragment key={index}>
-                                <Span
+                    {words ?
+                        words.map((word, index) => {
+                            return <Span
                                     word={word}
-                                    handleSpanWidthOverflowWithBreakline={handleSpanWidthOverflowWithBreakline}
+                                    updateBreaklineFlags={updateBreaklineFlags}
                                     id={index}
-                                    displayWordsBreaklineFlags={displayWordsBreaklineFlags}
+                                    breaklineFlags={breaklineFlags}
+                                    key={index}
                                 />
-                            </Fragment>
                         })
                         : ""
                     }

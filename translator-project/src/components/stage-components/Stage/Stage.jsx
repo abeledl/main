@@ -5,9 +5,9 @@ import Footer from "../Footer/Footer"
 import "./styles/StageStyle.css"
 
 export default function Stage({
-    languageTranslationsMap,
-    displayWordsBreaklineFlags,
-    setDisplayWordsBreaklineFlags
+    words,
+    breaklineFlags,
+    setBreaklineFlags
 }) {
 
     return (
@@ -15,14 +15,14 @@ export default function Stage({
             <Blurr />
             <VideoPlayer/>
             <Prompter
-                prompterDisplayWords={languageTranslationsMap.englishWords}
-                displayWordsBreaklineFlags={displayWordsBreaklineFlags}
-                setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
+                words={words.english}
+                breaklineFlags={breaklineFlags}
+                setBreaklineFlags={setBreaklineFlags}
             />
             <Prompter
-                prompterDisplayWords={languageTranslationsMap.spanishWords}
-                displayWordsBreaklineFlags={displayWordsBreaklineFlags}
-                setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
+                words={words.spanish}
+                breaklineFlags={breaklineFlags}
+                setBreaklineFlags={setBreaklineFlags}
             />
             <Footer />
         </div>

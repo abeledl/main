@@ -1,28 +1,19 @@
 import { useRef, useEffect, useState } from 'react'
 import "./styles/SpanStyle.css"
 
-export default function Span({ word, handleSpanWidthOverflowWithBreakline, id, displayWordsBreaklineFlags }) {
+export default function Span({ word, updateBreaklineFlags, id, breaklineFlags }) {
     const spanRef = useRef(null)
     const [addBreakLine, setAddBreakLine] = useState(false)
-    const [addedTheWords, setAddedTheWords] = useState(false)
 
     useEffect(() => {
-        if (!addedTheWords) {
-            const checkSpanWidth = () => {
-                if (spanRef.current && spanRef.current.offsetWidth !== undefined) {
-                    handleSpanWidthOverflowWithBreakline(spanRef.current.offsetWidth, id);
-                }
-            };
-            checkSpanWidth();
-            setAddedTheWords(true)
+        if (spanRef.current && spanRef.current.offsetWidth !== undefined) {
+            updateBreaklineFlags(spanRef.current.offsetWidth, id);
         }
     }, [])
 
     useEffect(() => {
-        if (addedTheWords) {
-            setAddBreakLine(displayWordsBreaklineFlags[id])
-        }
-    }, [displayWordsBreaklineFlags])
+        setAddBreakLine(breaklineFlags[id])
+    }, [breaklineFlags])
 
     return (
         <span role={'span'}>

@@ -1,0 +1,7 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    background: blue;
+    padding: 20px;
+    height: 400px;
+}

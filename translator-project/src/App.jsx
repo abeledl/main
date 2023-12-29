@@ -4,8 +4,8 @@ import { useState } from "react"
 import "./AppStyle.scss"
 
 function App() {
-  const [languageTranslationsMap, setLanguageTranslationsMap] = useState({})
-  const [displayWordsBreaklineFlags, setDisplayWordsBreaklineFlags] = useState([])
+  const [words, setWords] = useState({})
+  const [breaklineFlags, setBreaklineFlags] = useState([])
 
   const appStyle = {
     display: "flex",
@@ -15,13 +15,13 @@ function App() {
     <>
       <div style={appStyle}>
         <Stage
-          languageTranslationsMap={languageTranslationsMap}
-          displayWordsBreaklineFlags={displayWordsBreaklineFlags}
-          setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
+          words={words}
+          breaklineFlags={breaklineFlags}
+          setBreaklineFlags={setBreaklineFlags}
         />
         <Menu
-          setLanguageTranslationsMap={setLanguageTranslationsMap}
-          setDisplayWordsBreaklineFlags={setDisplayWordsBreaklineFlags}
+          setWords={setWords}
+          setBreaklineFlags={setBreaklineFlags}
         />
       </div>
     </>

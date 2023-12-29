@@ -1,19 +1,13 @@
 import TextInput from "../TextInput/TextInput"
 import PlayButton from "../PlayButton/PlayButton"
 import { useState } from "react"
+import "./styles/MenuStyle.css"
 
-export default function Menu({ setLanguageTranslationsMap, setDisplayWordsBreaklineFlags}) {
+export default function Menu({ setWords, setBreaklineFlags}) {
     const [englishWords, setEnglishWords] = useState([])
     const [spanishWords, setSpanishWords] = useState([])
     const [phoneticWordsSymbols, setPhoneticWordsSymbols] = useState([])
 
-    const menyStyle = {
-        display: "flex",
-        flexDirection: "column",
-        background: "blue",
-        padding: "20px",
-        height: "400px",
-    }
 
     const splitTextInputByLanguage = () => {
         // separte the text into an english array and a spanishh array
@@ -36,12 +30,12 @@ export default function Menu({ setLanguageTranslationsMap, setDisplayWordsBreakl
             }
             breaklinesArray.push(false)
         })
-        setLanguageTranslationsMap({ englishWords: englishWordsArray, spanishWords: spanishWordsArray, phoneticWordsSymbols: phoneticWordsSymbols })
-        setDisplayWordsBreaklineFlags(breaklinesArray)
+        setWords({ english: englishWordsArray, spanish: spanishWordsArray, phonetic: phoneticWordsSymbols })
+        setBreaklineFlags(breaklinesArray)
     }
 
     return (
-        <div style={menyStyle}>
+        <div className="menu">
             <TextInput setInputText={setEnglishWords} placeholder={"English"}/>
             <TextInput setInputText={setSpanishWords} placeholder={"Spanish"}/>
             <TextInput setInputText={setPhoneticWordsSymbols} placeholder={"Phonetic"}/>

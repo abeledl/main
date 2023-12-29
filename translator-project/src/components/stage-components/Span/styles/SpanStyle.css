@@ -1,5 +1,5 @@
 @font-face {
-    src: url(../Fonts/SF-Pro.ttf); 
+    src: url(../Fonts/SF-Pro.ttf);
     font-family: 'SF Pro';
 }
 
@@ -24,4 +24,19 @@
         calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * -0.9239) 0 var(--stroke-color),
         calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * -0.7071) 0 var(--stroke-color),
         calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * -0.3827) 0 var(--stroke-color);
+}
+
+.span-text {
+    font-size: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    font-weight: 900;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: rgb(44, 44, 44);
+    -webkit-filter: drop-shadow(0 5px 3px rgb(1, 1, 1, 0.6));
+    Filter: drop-shadow(0 5px 3px rgb(1, 1, 1, 0.6));
+    letter-spacing: -5px;
+    word-spacing: 12px;
+    padding: 0;
 }

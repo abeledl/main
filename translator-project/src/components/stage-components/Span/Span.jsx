@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import "./styles/SpanStyle.css"
 import useBreakline from '../../../hooks/useBreakline'
 

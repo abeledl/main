@@ -1,5 +1,5 @@
 import "./styles/VideoPlayerStyle.css"
-import myVideo from "../../../assets/bg-vid.webm"
+import myVideo from "../../../assets/videos/bg-vid.webm"
 
 export default function VideoPlayer() {
     return (

@@ -1,24 +1,15 @@
 import { useRef, useEffect, useState } from 'react'
 import "./styles/SpanStyle.css"
+import useBreakline from '../../../hooks/useBreakline'
 
-export default function Span({ word, updateBreaklineFlags, id, breaklineFlags }) {
+export default function Span({ word, spanWidthSum, id }) {
     const spanRef = useRef(null)
-    const [addBreakLine, setAddBreakLine] = useState(false)
-
-    useEffect(() => {
-        if (spanRef.current && spanRef.current.offsetWidth !== undefined) {
-            updateBreaklineFlags(spanRef.current.offsetWidth, id);
-        }
-    }, [])
-
-    useEffect(() => {
-        setAddBreakLine(breaklineFlags[id])
-    }, [breaklineFlags])
+    const breakline = useBreakline(spanRef, spanWidthSum, id)
 
     return (
         <span role={'span'}>
             <span ref={spanRef} className='span-text' id="spans-text" >
-                {addBreakLine ? <br data-test-id={'break'} /> : ""}
+                {breakline ? <br data-test-id={'break'} /> : ""}
                 {word}
             </span>
         </span>

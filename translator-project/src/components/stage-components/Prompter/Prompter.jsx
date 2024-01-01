@@ -5,7 +5,7 @@ import SpansDisplay from "../SpansDisplay/SpansDisplay"
 export default function Prompter({ words }) {
     return (
         <div className="prompter-container">
-            <div className="prompter-blurr">
+            <div className="prompter-blur">
                 <Blurr />
                 <SpansDisplay words={words} />
             </div>
